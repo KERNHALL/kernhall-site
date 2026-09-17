@@ -340,10 +340,10 @@ footer{
   font-size:.6rem;
 }
 
-.footer-links{
-  display:flex;
-  align-items:center;
-  gap:8px;
+.footer-links a{
+  text-decoration:none;
+  color:#47474d;
+  transition:color .18s ease;
 }
 
 .footer-links::before{
@@ -364,7 +364,7 @@ footer{
 }
 
 .footer-links a:hover{
-  color:#8b8b91;
+  color:#77777d;
 }
 
 /* MOBILE */
