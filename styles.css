@@ -116,13 +116,24 @@ nav a:hover{
 
 .hero-symbol{
   position:relative;
-  width:min(360px,72vw);
+  width:min(330px,68vw);
   height:auto;
   mix-blend-mode:screen;
 }
 
+/* KERNHALL-Wortmarke im Hero */
+
+.hero-wordmark{
+  position:relative;
+  display:block;
+  width:min(760px,78vw);
+  max-width:100%;
+  height:auto;
+  margin:10px auto 18px;
+}
+
 .eyebrow{
-  margin:24px 0 6px;
+  margin:22px 0 4px;
   color:#9e9ea4;
   font-weight:800;
   font-size:.72rem;
@@ -130,7 +141,6 @@ nav a:hover{
   text-transform:uppercase;
 }
 
-.hero h1,
 .release h2,
 .links-section h2{
   margin:0;
@@ -138,13 +148,8 @@ nav a:hover{
   line-height:1;
 }
 
-.hero h1{
-  font-size:clamp(3rem,11vw,8rem);
-  font-weight:900;
-}
-
 .hero-copy{
-  margin:18px 0 30px;
+  margin:14px 0 30px;
   color:#c4c4c8;
   font-size:clamp(1.02rem,2vw,1.35rem);
   letter-spacing:.03em;
@@ -340,10 +345,10 @@ footer{
   font-size:.6rem;
 }
 
-.footer-links a{
-  text-decoration:none;
-  color:#47474d;
-  transition:color .18s ease;
+.footer-links{
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 .footer-links::before{
@@ -353,7 +358,7 @@ footer{
 
 .footer-links a{
   text-decoration:none;
-  color:#5b5b61;
+  color:#47474d;
   transition:color .18s ease;
 }
 
@@ -397,7 +402,21 @@ footer{
   }
 
   .hero-symbol{
-    width:min(310px,76vw);
+    width:min(285px,70vw);
+  }
+
+  .hero-wordmark{
+    width:min(620px,88vw);
+    margin:8px auto 16px;
+  }
+
+  .eyebrow{
+    margin-top:18px;
+    font-size:.66rem;
+  }
+
+  .hero-copy{
+    margin-top:12px;
   }
 
   .section{
@@ -449,6 +468,14 @@ footer{
 
   .link-grid{
     grid-template-columns:1fr;
+  }
+
+  .hero-symbol{
+    width:min(250px,68vw);
+  }
+
+  .hero-wordmark{
+    width:90vw;
   }
 
   footer{
