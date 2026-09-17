@@ -121,12 +121,10 @@ nav a:hover{
   mix-blend-mode:screen;
 }
 
-/* KERNHALL-Wortmarke im Hero */
-
 .hero-wordmark{
   position:relative;
   display:block;
-  width:min(760px,78vw);
+  width:min(620px,68vw);
   max-width:100%;
   height:auto;
   margin:10px auto 18px;
@@ -406,7 +404,7 @@ footer{
   }
 
   .hero-wordmark{
-    width:min(620px,88vw);
+    width:min(520px,80vw);
     margin:8px auto 16px;
   }
 
@@ -475,7 +473,7 @@ footer{
   }
 
   .hero-wordmark{
-    width:90vw;
+    width:82vw;
   }
 
   footer{
