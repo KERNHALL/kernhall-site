@@ -1,15 +1,64 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Impressum – KERNHALL</title>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,follow">
+<title>Impressum – KERNHALL</title>
+
 <style>
-body{margin:0;background:#050505;color:#eee;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
-main{width:min(820px,calc(100% - 40px));margin:0 auto;padding:70px 0}
-a{color:#ddd}h1{font-size:2.6rem}h2{margin-top:2.2rem}.todo{border:1px solid #7b3f3f;background:#1a0d0d;padding:18px;margin:24px 0}
-code{color:#ddd}
+:root{
+  --bg:#050505; --panel:#0d0d0f; --text:#ededf0; --muted:#9a9aa0; --line:#242429;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65;
+}
+main{width:min(820px,calc(100% - 40px));margin:0 auto;padding:64px 0 80px}
+a{color:#d8d8dc}
+.back{display:inline-block;margin-bottom:34px;color:var(--muted);text-decoration:none}
+h1{font-size:clamp(2.2rem,7vw,3.8rem);line-height:1.05;margin:0 0 38px}
+h2{font-size:1.15rem;margin:38px 0 10px}
+p,li{color:#d2d2d6}
+.muted{color:var(--muted)}
+.card{border:1px solid var(--line);background:var(--panel);padding:22px;margin:20px 0}
+footer{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);color:#73737a;font-size:.8rem}
 </style>
-</head><body><main>
-<a href="/">← kernhall.de</a><h1>Impressum</h1>
-<div class="todo"><strong>VOR VERÖFFENTLICHUNG AUSFÜLLEN:</strong> Hier müssen die rechtlich erforderlichen Anbieterangaben ergänzt werden. Name und ladungsfähige Anschrift wurden bewusst nicht erfunden.</div>
-<p><strong>Angaben gemäß § 5 DDG</strong></p>
-<p>[Vollständiger Name]<br>[Straße und Hausnummer]<br>[PLZ Ort]<br>Deutschland</p>
-<p><strong>Kontakt</strong><br>E-Mail: kernhall@proton.me</p>
-<p>Stand: September 2026</p>
-</main></body></html>
+
+</head>
+<body>
+<main>
+<a class="back" href="/">← KERNHALL</a>
+<h1>Impressum</h1>
+
+<div class="card">
+<p><strong>Angaben gemäß § 5 DDG und § 18 MStV</strong></p>
+<p>
+Dominik Hirsch<br>
+Herrenweg 4<br>
+89346 Bibertal<br>
+Deutschland
+</p>
+
+<p>
+<strong>Kontakt</strong><br>
+E-Mail: <a href="mailto:kernhall@proton.me">kernhall@proton.me</a>
+</p>
+
+<p>
+<strong>Künstler-/Projektname</strong><br>
+KERNHALL
+</p>
+</div>
+
+<p class="muted">
+Es besteht kein Handelsregistereintrag. Eine Umsatzsteuer-Identifikationsnummer oder Wirtschafts-Identifikationsnummer ist derzeit nicht vorhanden.
+</p>
+
+<footer>Stand: September 2026</footer>
+</main>
+</body>
+</html>
