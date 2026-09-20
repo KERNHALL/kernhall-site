@@ -162,28 +162,39 @@ Rahmenbedingungen ändern.
 
 <script>
 (function () {
-  const endpoint = 'https://kernhall.goatcounter.com/counter/';
-
-  function loadCount(path, elementId) {
-    fetch(endpoint + encodeURIComponent(path) + '.json', { cache: 'no-store' })
+  function loadCount(url, elementId) {
+    fetch(url, { cache: 'no-store' })
       .then(function (response) {
         if (!response.ok) throw new Error('counter unavailable');
         return response.json();
       })
       .then(function (data) {
-        document.getElementById(elementId).textContent = data.count || '0';
+        const value = (data && data.count !== undefined && data.count !== null)
+          ? data.count
+          : '0';
+        document.getElementById(elementId).textContent = value;
       })
       .catch(function () {
         document.getElementById(elementId).textContent = '–';
       });
   }
 
-  // Small delay gives the current Datenschutz visit time to be registered first.
+  // GoatCounter erwartet den Seitenpfad direkt hinter /counter/.
+  // Bei der Startseite entsteht dadurch bewusst /counter//.json.
   window.setTimeout(function () {
-    loadCount('/', 'count-home');
-    loadCount('/impressum.html', 'count-impressum');
-    loadCount('/datenschutz.html', 'count-datenschutz');
-  }, 700);
+    loadCount(
+      'https://kernhall.goatcounter.com/counter//.json',
+      'count-home'
+    );
+    loadCount(
+      'https://kernhall.goatcounter.com/counter//impressum.html.json',
+      'count-impressum'
+    );
+    loadCount(
+      'https://kernhall.goatcounter.com/counter//datenschutz.html.json',
+      'count-datenschutz'
+    );
+  }, 1000);
 })();
 </script>
 
