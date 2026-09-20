@@ -26,8 +26,24 @@ p,li{color:#d2d2d6}
 .muted{color:var(--muted)}
 .card{border:1px solid var(--line);background:var(--panel);padding:22px;margin:20px 0}
 footer{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);color:#73737a;font-size:.8rem}
+
+.site-stats{
+  margin-top:28px;
+  padding-top:14px;
+  border-top:1px solid #17171b;
+  color:#55555c;
+  font-size:.68rem;
+  line-height:1.7;
+  letter-spacing:.02em;
+}
+.site-stats span{white-space:nowrap}
+
 </style>
 
+
+<script data-goatcounter="https://kernhall.goatcounter.com/count"
+        data-goatcounter-settings='{"path":"/datenschutz.html","no_events":true}'
+        async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <main>
@@ -66,15 +82,35 @@ werden können. GitHub stützt internationale Übermittlungen unter anderem auf 
 Standardvertragsklauseln der Europäischen Kommission und erklärt die Teilnahme am EU-U.S. Data Privacy Framework.
 </p>
 
-<h2>3. Cookies, Analyse und Tracking</h2>
+<h2>3. Reichweitenmessung mit GoatCounter</h2>
 <p>
-Wir setzen auf dieser Website selbst keine Analyse- oder Marketingdienste ein und binden keine
-Werbetracker, Social-Media-Pixel oder externen Video-/Audio-Player ein. Es findet durch uns kein
-profilbildendes Tracking statt.
+Zur einfachen Reichweitenmessung verwenden wir GoatCounter. Anbieter des Dienstes ist Martin Tournoij,
+Irland. Die Verarbeitung der Analysedaten erfolgt nach Angaben des Anbieters auf Servern von
+Hetzner Online GmbH in Deutschland und Finnland.
 </p>
 <p>
-Die Website verwendet daher derzeit keinen eigenen Consent-/Cookie-Banner. Technisch erforderliche
+GoatCounter wird auf dieser Website ohne Cookies, Local Storage oder vergleichbare dauerhafte
+Kennungen eingesetzt. Erfasst werden insbesondere der aufgerufene Seitenpfad sowie aggregierte
+technische Informationen wie Browser, Betriebssystem, Sprache, ungefähres Land und Bildschirmbreite.
+Die IP-Adresse und der vollständige User-Agent werden nach Angaben von GoatCounter nicht dauerhaft
+in der Datenbank gespeichert. Zur Erkennung wiederholter Besuche innerhalb einer Sitzung können
+IP-Adresse und User-Agent vorübergehend im Arbeitsspeicher verarbeitet werden.
+</p>
+<p>
+Die Verarbeitung dient ausschließlich dazu, die Nutzung dieser Website in aggregierter Form zu
+verstehen und die Reichweite der einzelnen Seiten zu messen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+DSGVO. Unser berechtigtes Interesse liegt in einer datensparsamen Reichweitenmessung und der
+technischen sowie inhaltlichen Optimierung unseres Internetauftritts.
+</p>
+<p>
+Es findet durch uns kein werbliches oder profilbildendes Tracking statt. Wir setzen hierfür keine
+eigenen Analyse-Cookies und keine Social-Media-Pixel ein. Ein eigener Consent-/Cookie-Banner wird
+für diese cookielose Reichweitenmessung daher derzeit nicht eingesetzt. Technisch erforderliche
 Verarbeitungen des Hostinganbieters bleiben davon unberührt.
+</p>
+<p>
+Weitere Informationen zur Datenverarbeitung durch GoatCounter finden Sie in der
+<a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener">Datenschutzinformation von GoatCounter</a>.
 </p>
 
 <h2>4. Kontaktaufnahme per E-Mail</h2>
@@ -116,6 +152,41 @@ Rahmenbedingungen ändern.
 </p>
 
 <footer>Stand: September 2026</footer>
+
+<div class="site-stats" aria-label="Anonyme Seitenstatistik">
+  Seitenaufrufe:
+  <span>Startseite <strong id="count-home">–</strong></span>
+  · <span>Impressum <strong id="count-impressum">–</strong></span>
+  · <span>Datenschutz <strong id="count-datenschutz">–</strong></span>
+</div>
+
+<script>
+(function () {
+  const endpoint = 'https://kernhall.goatcounter.com/counter/';
+
+  function loadCount(path, elementId) {
+    fetch(endpoint + encodeURIComponent(path) + '.json', { cache: 'no-store' })
+      .then(function (response) {
+        if (!response.ok) throw new Error('counter unavailable');
+        return response.json();
+      })
+      .then(function (data) {
+        document.getElementById(elementId).textContent = data.count || '0';
+      })
+      .catch(function () {
+        document.getElementById(elementId).textContent = '–';
+      });
+  }
+
+  // Small delay gives the current Datenschutz visit time to be registered first.
+  window.setTimeout(function () {
+    loadCount('/', 'count-home');
+    loadCount('/impressum.html', 'count-impressum');
+    loadCount('/datenschutz.html', 'count-datenschutz');
+  }, 700);
+})();
+</script>
+
 </main>
 </body>
 </html>
