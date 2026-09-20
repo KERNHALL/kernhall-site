@@ -345,6 +345,23 @@ nav a:hover{color:#fff}
   border-color:#fff;
 }
 
+.release-card-actions{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.release-card-link.secondary{
+  color:#8d8d93;
+  border-color:#3d3d42;
+}
+
+.release-card-link.secondary:hover{
+  color:#fff;
+  border-color:#fff;
+}
+
 .noscript-note{
   margin:24px 0 0;
   color:#9c9ca1;
@@ -472,6 +489,14 @@ footer{
     grid-template-columns:1fr;
     gap:38px;
     padding-bottom:68px;
+  }
+
+  .button-row{
+    width:100%;
+  }
+
+  .button-row .button{
+    min-width:190px;
   }
 
   .release-list-heading{
