@@ -37,11 +37,24 @@ footer{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);color:#
   letter-spacing:.02em;
 }
 .site-stats span{white-space:nowrap}
-
-.count-slot{
-  display:inline;
-  color:#55555c;
-  font:inherit;
+.site-stats .counter-value{
+  display:inline !important;
+  position:static !important;
+  width:auto !important;
+  height:auto !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:#55555c !important;
+  font:inherit !important;
+  font-weight:400 !important;
+  line-height:inherit !important;
+  vertical-align:baseline !important;
 }
 
 
@@ -162,9 +175,9 @@ Rahmenbedingungen ändern.
 
 <div class="site-stats" aria-label="Anonyme Seitenstatistik">
   Seitenaufrufe:
-  <span>Startseite <strong id="count-home">–</strong></span>
-  · <span>Impressum <strong id="count-impressum">–</strong></span>
-  · <span>Datenschutz <strong id="count-datenschutz">–</strong></span>
+  <span>Startseite <span class="counter-value" id="count-home">–</span></span>
+  · <span>Impressum <span class="counter-value" id="count-impressum">–</span></span>
+  · <span>Datenschutz <span class="counter-value" id="count-datenschutz">–</span></span>
 </div>
 
 <script>
