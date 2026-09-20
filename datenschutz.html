@@ -27,6 +27,10 @@ p,li{color:#d2d2d6}
 .card{border:1px solid var(--line);background:var(--panel);padding:22px;margin:20px 0}
 footer{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);color:#73737a;font-size:.8rem}
 
+
+
+
+
 .site-stats{
   margin-top:28px;
   padding-top:14px;
@@ -36,41 +40,29 @@ footer{margin-top:54px;padding-top:24px;border-top:1px solid var(--line);color:#
   line-height:1.7;
   letter-spacing:.02em;
 }
-.site-stats span{white-space:nowrap}
-
-.count-slot{
-  display:inline;
-  color:#55555c;
-  font:inherit;
+.site-stats .stat-item{
+  white-space:nowrap;
 }
-
-
-
-.site-stats strong{
-  display:inline !important;
-  position:static !important;
-  float:none !important;
-  width:auto !important;
-  height:auto !important;
-  min-width:0 !important;
-  min-height:0 !important;
-  max-width:none !important;
-  max-height:none !important;
+.site-stats .counter-slot{
+  display:inline-block;
+  width:24px;
+  height:16px;
+  margin-left:2px;
+  overflow:hidden;
+  vertical-align:-3px;
+}
+.site-stats .counter-slot iframe{
+  display:block !important;
+  width:24px !important;
+  height:16px !important;
+  min-width:24px !important;
+  min-height:16px !important;
   margin:0 !important;
   padding:0 !important;
   border:0 !important;
-  border-radius:0 !important;
-  outline:0 !important;
-  background:none !important;
-  background-color:transparent !important;
+  background:transparent !important;
   box-shadow:none !important;
-  color:#55555c !important;
-  font:inherit !important;
-  font-size:inherit !important;
-  font-weight:400 !important;
-  line-height:inherit !important;
-  letter-spacing:inherit !important;
-  vertical-align:baseline !important;
+  overflow:hidden !important;
 }
 
 </style>
@@ -190,54 +182,81 @@ Rahmenbedingungen ändern.
 
 <div class="site-stats" aria-label="Anonyme Seitenstatistik">
   Seitenaufrufe:
-  <span>Startseite <strong id="count-home">–</strong></span>
-  · <span>Impressum <strong id="count-impressum">–</strong></span>
-  · <span>Datenschutz <strong id="count-datenschutz">–</strong></span>
+  <span class="stat-item">Startseite <span class="counter-slot" id="count-home"></span></span>
+  · <span class="stat-item">Impressum <span class="counter-slot" id="count-impressum"></span></span>
+  · <span class="stat-item">Datenschutz <span class="counter-slot" id="count-datenschutz"></span></span>
 </div>
 
 <script>
 (function () {
-  var base = 'https://kernhall.goatcounter.com/counter/';
+  var tries = 0;
 
-  function loadCount(path, elementId) {
-    var el = document.getElementById(elementId);
-    if (!el) return;
-
-    var request = new XMLHttpRequest();
-
-    request.addEventListener('load', function () {
-      if (request.status === 200) {
-        try {
-          var data = JSON.parse(request.responseText);
-          el.textContent = (data && data.count !== undefined) ? data.count : '0';
-        } catch (e) {
-          el.textContent = '–';
+  function addCounter(selector, path) {
+    window.goatcounter.visit_count({
+      append: selector,
+      type: 'html',
+      path: path,
+      no_branding: true,
+      attr: {
+        width: '24',
+        height: '16',
+        loading: 'eager'
+      },
+      style: `
+        html, body {
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 24px !important;
+          height: 16px !important;
+          overflow: hidden !important;
+          background: transparent !important;
         }
-      } else if (request.status === 404) {
-        // Der Pfad wurde von GoatCounter noch nicht erfasst.
-        el.textContent = '0';
-      } else {
-        el.textContent = '–';
-      }
+        div {
+          display: block !important;
+          width: 24px !important;
+          height: 16px !important;
+          min-width: 0 !important;
+          min-height: 0 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: 0 !important;
+          border-radius: 0 !important;
+          background: transparent !important;
+          box-shadow: none !important;
+          color: #55555c !important;
+          font: 400 11px/16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+          text-align: left !important;
+          overflow: hidden !important;
+        }
+        #gcvc-for,
+        #gcvc-by {
+          display: none !important;
+        }
+        #gcvc-views {
+          display: block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          color: #55555c !important;
+          font: 400 11px/16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+          text-align: left !important;
+        }
+      `
     });
-
-    request.addEventListener('error', function () {
-      el.textContent = '–';
-    });
-
-    // GoatCounter-Dokumentation:
-    // /counter/ + encodeURIComponent(exakter Pfad) + .json
-    request.open(
-      'GET',
-      base + encodeURIComponent(path) + '.json',
-      true
-    );
-    request.send();
   }
 
-  loadCount('/', 'count-home');
-  loadCount('/impressum.html', 'count-impressum');
-  loadCount('/datenschutz.html', 'count-datenschutz');
+  var timer = window.setInterval(function () {
+    tries++;
+
+    if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
+      window.clearInterval(timer);
+
+      addCounter('#count-home', '/');
+      addCounter('#count-impressum', '/impressum.html');
+      addCounter('#count-datenschutz', '/datenschutz.html');
+    } else if (tries >= 100) {
+      window.clearInterval(timer);
+    }
+  }, 100);
 })();
 </script>
 
