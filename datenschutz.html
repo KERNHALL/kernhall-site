@@ -162,72 +162,54 @@ Rahmenbedingungen ändern.
 
 <div class="site-stats" aria-label="Anonyme Seitenstatistik">
   Seitenaufrufe:
-  <span>Startseite <span class="count-slot" id="count-home">–</span></span>
-  · <span>Impressum <span class="count-slot" id="count-impressum">–</span></span>
-  · <span>Datenschutz <span class="count-slot" id="count-datenschutz">–</span></span>
+  <span>Startseite <strong id="count-home">–</strong></span>
+  · <span>Impressum <strong id="count-impressum">–</strong></span>
+  · <span>Datenschutz <strong id="count-datenschutz">–</strong></span>
 </div>
 
 <script>
 (function () {
-  var attempts = 0;
-  var maxAttempts = 100;
+  var base = 'https://kernhall.goatcounter.com/counter/';
 
-  function addCounter(selector, path) {
-    var target = document.querySelector(selector);
-    if (!target) return;
+  function loadCount(path, elementId) {
+    var el = document.getElementById(elementId);
+    if (!el) return;
 
-    target.textContent = '';
+    var request = new XMLHttpRequest();
 
-    window.goatcounter.visit_count({
-      append: selector,
-      path: path,
-      no_branding: true,
-      style: `
-        div {
-          display: inline !important;
-          width: auto !important;
-          height: auto !important;
-          min-width: 0 !important;
-          min-height: 0 !important;
-          padding: 0 !important;
-          margin: 0 !important;
-          border: 0 !important;
-          background: transparent !important;
-          box-shadow: none !important;
-          color: inherit !important;
-          font: inherit !important;
-          line-height: inherit !important;
+    request.addEventListener('load', function () {
+      if (request.status === 200) {
+        try {
+          var data = JSON.parse(request.responseText);
+          el.textContent = (data && data.count !== undefined) ? data.count : '0';
+        } catch (e) {
+          el.textContent = '–';
         }
-        #gcvc-for,
-        #gcvc-by {
-          display: none !important;
-        }
-        #gcvc-views {
-          display: inline !important;
-          color: inherit !important;
-          font: inherit !important;
-          line-height: inherit !important;
-        }
-      `
+      } else if (request.status === 404) {
+        // Der Pfad wurde von GoatCounter noch nicht erfasst.
+        el.textContent = '0';
+      } else {
+        el.textContent = '–';
+      }
     });
+
+    request.addEventListener('error', function () {
+      el.textContent = '–';
+    });
+
+    // GoatCounter-Dokumentation:
+    // /counter/ + encodeURIComponent(exakter Pfad) + .json
+    request.open(
+      'GET',
+      base + encodeURIComponent(path) + '.json',
+      true
+    );
+    request.send();
   }
 
-  var timer = window.setInterval(function () {
-    attempts += 1;
-
-    if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
-      window.clearInterval(timer);
-
-      addCounter('#count-home', '/');
-      addCounter('#count-impressum', '/impressum.html');
-      addCounter('#count-datenschutz', '/datenschutz.html');
-      return;
-    }
-
-    if (attempts >= maxAttempts) {
-      window.clearInterval(timer);
-    }
-  }, 100);
+  loadCount('/', 'count-home');
+  loadCount('/impressum.html', 'count-impressum');
+  loadCount('/datenschutz.html', 'count-datenschutz');
 })();
 </script>
 
