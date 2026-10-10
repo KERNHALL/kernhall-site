@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create mobile-friendly WebP copies of existing KERNHALL cover PNGs.
 
-Staged utility only. Does not run automatically, change published files,
+Does not run automatically, change published files,
 overwrite source artwork, or modify HTML references.
 Usage: python -m pip install Pillow
        python scripts/optimize_covers.py
@@ -18,9 +18,9 @@ for original in sorted(SOURCE.glob("*.png")):
     target = DEST / (original.stem + ".webp")
     with Image.open(original) as image:
         image = image.convert("RGB")
-        if max(image.size) > 1100:
-            image.thumbnail((1100, 1100), Image.Resampling.LANCZOS)
-        image.save(target, "WEBP", quality=82, method=6)
+        if max(image.size) > 1600:
+            image.thumbnail((1600, 1600), Image.Resampling.LANCZOS)
+        image.save(target, "WEBP", quality=90, method=6)
     old_kb = original.stat().st_size / 1024
     new_kb = target.stat().st_size / 1024
     print(f"{original.name}: {old_kb:.0f} KB -> {new_kb:.0f} KB "
