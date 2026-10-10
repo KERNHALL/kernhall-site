@@ -202,9 +202,10 @@
 
       <noscript>
         <p class="noscript-note">
-          Für die automatische Release-Anzeige muss JavaScript aktiviert sein.
-          Alle Veröffentlichungen findest du über die offiziellen
-          KERNHALL-Streaminglinks.
+          Für die automatische Anzeige der Songs muss JavaScript aktiviert sein.
+          Alle Releases findest du über die offiziellen Streaminglinks.
+          / JavaScript is required for the automatic release list.
+          Find all releases using KERNHALL's official streaming links.
         </p>
       </noscript>
     </section>
@@ -301,7 +302,7 @@
         </a>
 
         <a href="mailto:kernhall@proton.me">
-          <span>E-Mail</span>
+          <span>E-Mail / Email</span>
           <small>Kontakt / Contact</small>
         </a>
       </div>
@@ -595,7 +596,9 @@
           : 'Jetzt anhören. / Listen now.';
 
       if (release.series) {
-        series.textContent = release.series;
+        series.textContent = release.series === 'DIE SCHAURIGEN MÄRCHEN'
+          ? release.series + ' / DARK FAIRY TALES'
+          : release.series;
         series.hidden = false;
       } else {
         series.textContent = '';
@@ -663,8 +666,9 @@
         badge.className =
           'release-card-series';
 
-        badge.textContent =
-          release.series;
+        badge.textContent = release.series === 'DIE SCHAURIGEN MÄRCHEN'
+          ? release.series + ' / DARK FAIRY TALES'
+          : release.series;
 
         content.appendChild(badge);
       }
