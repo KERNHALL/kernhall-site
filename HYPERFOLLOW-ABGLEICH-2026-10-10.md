@@ -28,7 +28,12 @@
 
 ## Noch offen
 
-Die Live-HyperFollow-Seiten waren in der verfügbaren Webumgebung nicht direkt abrufbar. **Veröffentlichungsdaten wurden daher ausdrücklich nicht daraus entnommen oder geändert.** Alle Termine in `index.html` bleiben exakt wie vor dem Abgleich.
+Die meisten Live-HyperFollow-Seiten sind über den Direktabruf hier nicht zugänglich. Zwei Seiten konnten jedoch über den öffentlich indexierten Inhalt belegt werden:
+- **HEIMKEHR**: HyperFollow `Available October 9, 2026` – identisch mit Website 09.10.2026.
+- **SIEBEN JAHRE**: HyperFollow `Available November 6, 2026` – Website-Datum derzeit 13.11.2026. **ACHTUNG: Datumskonflikt mit TAKTGEBER, der im Website-Code ebenfalls auf den 06.11.2026 terminiert ist.**
+Quellen: https://distrokid.com/hyperfollow/kernhall/heimkehr/ und https://distrokid.com/hyperfollow/kernhall/sieben-jahre
+
+**Veröffentlichungsdaten und Titel wurden nicht geändert.** Vor Übernahme des für SIEBEN JAHRE abweichenden Datums den konkurrierenden TAKTGEBER-Termin verifizieren. Die restlichen 17 HyperFollow-Releasetermine konnten nicht unabhängig bestätigt werden. Alle Termine in `index.html` bleiben bis zur Freigabe unverändert.
 
 Auch Titel bleiben bis zur Freigabe des Projektinhabers unverändert. DistroKid-Übersicht zeigt teilweise abweichende Schreibweisen (WACHOLDERBAUM ohne DER, GEVATTER TOD ohne DER, SCHWARZE SPINNE ohne DIE und ASCII-Umschreibungen von Umlauten).
 
