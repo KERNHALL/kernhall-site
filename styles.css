@@ -539,3 +539,23 @@ footer{
 footer{color:#93939c;font-size:.75rem}
 @media(max-width:760px){nav{gap:9px}nav a{font-size:.58rem;letter-spacing:.035em}.upcoming-note a{margin-left:0;margin-top:7px}}
 @media(max-width:430px){nav a:nth-child(1){display:inline}nav a:nth-child(2){display:none}nav a{font-size:.52rem}.site-header{gap:8px}.brand img{width:105px;max-width:26vw}.hero-actions{flex-direction:column;align-items:center}}
+
+/* Static song catalogue and standalone song pages */
+.song-catalogue{margin:40px 0 0;padding:20px;border:1px solid var(--line);background:var(--panel)}
+.song-catalogue summary{cursor:pointer;font-weight:750;color:var(--silver)}
+.song-catalogue ol{padding-left:24px;margin:20px 0 0}
+.song-catalogue li{padding:8px 0}
+.song-catalogue time{display:inline-block;margin-left:18px;color:var(--muted);font-size:.8rem}
+.song-page{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:48px 0 80px}
+.song-breadcrumb{margin:0 0 32px;color:var(--muted);font-size:.85rem}
+.song-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:center}
+.song-cover{display:block;width:100%;height:auto;aspect-ratio:1/1;border:1px solid var(--line)}
+.song-content{min-width:0}
+.song-content h1{font-size:clamp(2.2rem,5vw,4.8rem);line-height:1.05;overflow-wrap:anywhere;margin:10px 0 24px}
+.song-date,.song-series,.song-status{color:var(--muted)}
+.song-content .button-row{margin-top:28px}
+.song-content .button{max-width:100%;text-align:center;white-space:normal;padding:12px 20px}
+.song-about,.song-related{border-top:1px solid var(--line);margin-top:60px;padding-top:32px}
+.song-about p{max-width:75ch}
+.song-related li{padding:5px 0}
+@media(max-width:760px){.song-layout{grid-template-columns:1fr;gap:28px}.song-page{padding-top:28px}.song-catalogue time{display:block;margin-left:0}.song-content .eyebrow{margin-top:0}}

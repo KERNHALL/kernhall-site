@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
-  <title>KERNHALL | Industrial Metal &amp; Metalcore mit deutschen Texten / German Lyrics</title>
+  <title>KERNHALL – Industrial Metal &amp; Metalcore auf Deutsch</title>
 
   <meta
     name="description"
@@ -141,6 +141,7 @@
           </p>
 
           <h3 id="featured-title"></h3>
+          <p><a class="release-card-link" id="featured-details" href="/#song-catalogue">SONGDETAILS / ABOUT THIS SONG</a></p>
 
           <p
             class="featured-date"
@@ -200,14 +201,29 @@
         aria-live="polite">
       </div>
 
-      <noscript>
-        <p class="noscript-note">
-          Für die automatische Anzeige der Songs muss JavaScript aktiviert sein.
-          Alle Releases findest du über die offiziellen Streaminglinks.
-          / JavaScript is required for the automatic release list.
-          Find all releases using KERNHALL's official streaming links.
-        </p>
-      </noscript>
+      <!-- SONG-CATALOGUE:START -->
+<details class="song-catalogue" id="song-catalogue"><summary>Alle Songs &amp; Termine / All songs &amp; release dates</summary><ol>
+<li><a href="/songs/kern/">KERN</a><time datetime="2026-09-18">18.09.2026</time></li>
+<li><a href="/songs/impuls/">IMPULS</a><time datetime="2026-09-25">25.09.2026</time></li>
+<li><a href="/songs/hall/">HALL</a><time datetime="2026-10-02">02.10.2026</time></li>
+<li><a href="/songs/heimkehr/">HEIMKEHR</a><time datetime="2026-10-09">09.10.2026</time></li>
+<li><a href="/songs/ueberlast/">UEBERLAST</a><time datetime="2026-10-16">16.10.2026</time></li>
+<li><a href="/songs/kontrollverlust/">KONTROLLVERLUST</a><time datetime="2026-10-23">23.10.2026</time></li>
+<li><a href="/songs/taktgeber/">TAKTGEBER</a><time datetime="2026-10-30">30.10.2026</time></li>
+<li><a href="/songs/sieben-jahre/">SIEBEN JAHRE</a><time datetime="2026-11-06">06.11.2026</time></li>
+<li><a href="/songs/raeuberbraeutigam/">RAEUBERBRAEUTIGAM</a><time datetime="2026-11-13">13.11.2026</time></li>
+<li><a href="/songs/vorarbeiter/">VORARBEITER</a><time datetime="2026-11-20">20.11.2026</time></li>
+<li><a href="/songs/wacholderbaum/">WACHOLDERBAUM</a><time datetime="2026-11-27">27.11.2026</time></li>
+<li><a href="/songs/licht-im-stahl/">Licht im Stahl</a><time datetime="2026-11-29">29.11.2026</time></li>
+<li><a href="/songs/der-singende-knochen/">DER SINGENDE KNOCHEN</a><time datetime="2026-12-04">04.12.2026</time></li>
+<li><a href="/songs/koenigin-aus-stein/">KOENIGIN AUS STEIN</a><time datetime="2026-12-11">11.12.2026</time></li>
+<li><a href="/songs/die-drei-schlangenblaetter/">DIE DREI SCHLANGENBLAETTER</a><time datetime="2026-12-18">18.12.2026</time></li>
+<li><a href="/songs/das-kalte-herz/">DAS KALTE HERZ</a><time datetime="2026-12-25">25.12.2026</time></li>
+<li><a href="/songs/gevatter-tod/">GEVATTER TOD</a><time datetime="2027-01-01">01.01.2027</time></li>
+<li><a href="/songs/schwarze-spinne/">SCHWARZE SPINNE</a><time datetime="2027-01-08">08.01.2027</time></li>
+<li><a href="/songs/traegerwelle/">TRÄGERWELLE</a><time datetime="2027-01-15">15.01.2027</time></li>
+</ol></details>
+<!-- SONG-CATALOGUE:END -->
     </section>
 
     <section
@@ -512,6 +528,11 @@
       }
     ];
 
+    function songPath(release) {
+      const slug = release.hyperfollow.split('/').filter(Boolean).pop();
+      return `/songs/${slug === 'trgerwelle' ? 'traegerwelle' : slug}/`;
+    }
+
     function getBerlinDateString() {
       const parts = new Intl.DateTimeFormat('de-DE', {
         timeZone: 'Europe/Berlin',
@@ -584,6 +605,7 @@
           : 'AKTUELL VERFÜGBAR / OUT NOW';
 
       title.textContent = release.title;
+      document.getElementById('featured-details').href = songPath(release);
 
       date.textContent =
         isUpcoming
@@ -750,6 +772,12 @@
         actions.appendChild(spotifyLink);
       }
 
+      const detailsLink = document.createElement('a');
+      detailsLink.className = 'release-card-link';
+      detailsLink.href = songPath(release);
+      detailsLink.textContent = 'SONGDETAILS';
+      actions.appendChild(detailsLink);
+
       content.appendChild(actions);
 
       article.appendChild(img);
@@ -763,15 +791,15 @@
         released.map(release => ({
           '@type': 'MusicRecording',
           '@id':
-            `https://kernhall.de/#${slugify(release.title)}`,
+            `https://kernhall.de${songPath(release)}#recording`,
           name: release.title,
           datePublished: release.date,
           inLanguage: 'de',
           image:
             `https://kernhall.de${release.cover}`,
-          url: release.hyperfollow,
+          url: `https://kernhall.de${songPath(release)}`,
           ...(release.spotify
-            ? { sameAs: release.spotify }
+            ? { sameAs: [release.hyperfollow, release.spotify] }
             : {}),
           byArtist: {
             '@id':

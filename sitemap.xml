@@ -1,9 +1,63 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kernhall.de/</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/kern/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/impuls/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/hall/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/heimkehr/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/ueberlast/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/kontrollverlust/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/taktgeber/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/sieben-jahre/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/raeuberbraeutigam/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/vorarbeiter/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/wacholderbaum/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/licht-im-stahl/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/der-singende-knochen/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/koenigin-aus-stein/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/die-drei-schlangenblaetter/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/das-kalte-herz/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/gevatter-tod/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/schwarze-spinne/</loc>
+  </url>
+  <url>
+    <loc>https://kernhall.de/songs/traegerwelle/</loc>
   </url>
 </urlset>
