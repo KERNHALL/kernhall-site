@@ -1,42 +1,35 @@
 # HyperFollow-Abgleich (10.10.2026)
 
-**Quelle:** Vom Projektinhaber aus DistroKid übermittelte HyperFollow-Übersicht (19 Einträge). Die Links wurden mit dem Website-Entwurf abgeglichen.
+Alle 19 offiziellen HyperFollow-Seiten wurden am 10.10.2026 im Cloud Browser geöffnet. Titel wurden aus der sichtbaren Seite übernommen, Termine aus der sichtbaren Angabe `AVAILABLE …`. Keine Datumsableitung aus Link, Reihenfolge, früherem Plan oder Suchindex.
 
-**Ergebnis:** 19/19 zugeordnet. 18/19 waren zuvor identisch; bei TRÄGERWELLE wurde ausschließlich der optionale URL-Parameter `?ref=release` entfernt.
+Ergebnis: 19/19 Titel verifiziert, 15/19 Veröffentlichungsdaten verifiziert. 8 Titel und 7 Termine in index.html korrigiert. Die ersten vier Seiten zeigen Streaminglinks, aber keinen Veröffentlichungstermin; deren vorhandene Termine bleiben unverändert und gelten in dieser Prüfung nicht als bestätigt. Insbesondere der früher dokumentierte HEIMKEHR-Termin wurde im aktuellen Browserabruf nicht angezeigt.
 
-| Website-Titel (noch unverändert) | Offizieller HyperFollow-Link |
-| --- | --- |
-| KERN | https://distrokid.com/hyperfollow/kernhall/kern |
-| IMPULS | https://distrokid.com/hyperfollow/kernhall/impuls |
-| HALL | https://distrokid.com/hyperfollow/kernhall/hall |
-| HEIMKEHR | https://distrokid.com/hyperfollow/kernhall/heimkehr |
-| ÜBERLAST | https://distrokid.com/hyperfollow/kernhall/ueberlast |
-| KONTROLLVERLUST | https://distrokid.com/hyperfollow/kernhall/kontrollverlust |
-| KÖNIGIN AUS STEIN | https://distrokid.com/hyperfollow/kernhall/koenigin-aus-stein |
-| TAKTGEBER | https://distrokid.com/hyperfollow/kernhall/taktgeber |
-| SIEBEN JAHRE | https://distrokid.com/hyperfollow/kernhall/sieben-jahre |
-| RÄUBERBRÄUTIGAM | https://distrokid.com/hyperfollow/kernhall/raeuberbraeutigam |
-| DER WACHOLDERBAUM | https://distrokid.com/hyperfollow/kernhall/wacholderbaum |
-| LICHT IM STAHL | https://distrokid.com/hyperfollow/kernhall/licht-im-stahl |
-| DER SINGENDE KNOCHEN | https://distrokid.com/hyperfollow/kernhall/der-singende-knochen |
-| DIE DREI SCHLANGENBLÄTTER | https://distrokid.com/hyperfollow/kernhall/die-drei-schlangenblaetter |
-| DAS KALTE HERZ | https://distrokid.com/hyperfollow/kernhall/das-kalte-herz |
-| DER GEVATTER TOD | https://distrokid.com/hyperfollow/kernhall/gevatter-tod |
-| DIE SCHWARZE SPINNE | https://distrokid.com/hyperfollow/kernhall/schwarze-spinne |
-| TRÄGERWELLE | https://distrokid.com/hyperfollow/kernhall/trgerwelle |
-| VORARBEITER | https://distrokid.com/hyperfollow/kernhall/vorarbeiter |
+| Nr. | index.html vorher: Titel | Exakter HyperFollow-Titel | Datum vorher | HyperFollow-Datum | Ergebnis / Änderung | Quelle |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | KERN | KERN | 18.09.2026 | Nicht verifizierbar | Datum unverändert, Seite zeigt keinen Termin | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/kern) |
+| 2 | IMPULS | IMPULS | 25.09.2026 | Nicht verifizierbar | Datum unverändert, Seite zeigt keinen Termin | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/impuls) |
+| 3 | HALL | HALL | 02.10.2026 | Nicht verifizierbar | Datum unverändert, Seite zeigt keinen Termin | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/hall) |
+| 4 | HEIMKEHR | HEIMKEHR | 09.10.2026 | Nicht verifizierbar | Datum unverändert, Seite zeigt keinen Termin | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/heimkehr) |
+| 5 | ÜBERLAST | UEBERLAST | 16.10.2026 | 16.10.2026 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/ueberlast) |
+| 6 | KONTROLLVERLUST | KONTROLLVERLUST | 23.10.2026 | 23.10.2026 | Titel und Datum identisch | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/kontrollverlust) |
+| 7 | KÖNIGIN AUS STEIN | KOENIGIN AUS STEIN | 30.10.2026 | 11.12.2026 | Titel korrigiert; Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/koenigin-aus-stein) |
+| 8 | TAKTGEBER | TAKTGEBER | 06.11.2026 | 30.10.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/taktgeber) |
+| 9 | SIEBEN JAHRE | SIEBEN JAHRE | 13.11.2026 | 06.11.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/sieben-jahre) |
+| 10 | RÄUBERBRÄUTIGAM | RAEUBERBRAEUTIGAM | 20.11.2026 | 13.11.2026 | Titel korrigiert; Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/raeuberbraeutigam) |
+| 11 | DER WACHOLDERBAUM | WACHOLDERBAUM | 27.11.2026 | 27.11.2026 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/wacholderbaum) |
+| 12 | LICHT IM STAHL | Licht im Stahl | 29.11.2026 | 29.11.2026 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/licht-im-stahl) |
+| 13 | DER SINGENDE KNOCHEN | DER SINGENDE KNOCHEN | 04.12.2026 | 04.12.2026 | Titel und Datum identisch | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/der-singende-knochen) |
+| 14 | DIE DREI SCHLANGENBLÄTTER | DIE DREI SCHLANGENBLAETTER | 11.12.2026 | 18.12.2026 | Titel korrigiert; Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/die-drei-schlangenblaetter) |
+| 15 | DAS KALTE HERZ | DAS KALTE HERZ | 18.12.2026 | 25.12.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/das-kalte-herz) |
+| 16 | DER GEVATTER TOD | GEVATTER TOD | 01.01.2027 | 01.01.2027 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/gevatter-tod) |
+| 17 | DIE SCHWARZE SPINNE | SCHWARZE SPINNE | 08.01.2027 | 08.01.2027 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/schwarze-spinne) |
+| 18 | TRÄGERWELLE | TRÄGERWELLE | 15.01.2027 | 15.01.2027 | Titel und Datum identisch | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/trgerwelle) |
+| 19 | VORARBEITER | VORARBEITER | 22.01.2027 | 20.11.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/vorarbeiter) |
 
-## Noch offen
+## Umsetzung und Kontrolle
 
-Die meisten Live-HyperFollow-Seiten sind über den Direktabruf hier nicht zugänglich. Zwei Seiten konnten jedoch über den öffentlich indexierten Inhalt belegt werden:
-- **HEIMKEHR**: HyperFollow `Available October 9, 2026` – identisch mit Website 09.10.2026.
-- **SIEBEN JAHRE**: HyperFollow `Available November 6, 2026` – Website-Datum derzeit 13.11.2026. **ACHTUNG: Datumskonflikt mit TAKTGEBER, der im Website-Code ebenfalls auf den 06.11.2026 terminiert ist.**
-Quellen: https://distrokid.com/hyperfollow/kernhall/heimkehr/ und https://distrokid.com/hyperfollow/kernhall/sieben-jahre
-
-**Veröffentlichungsdaten und Titel wurden nicht geändert.** Vor Übernahme des für SIEBEN JAHRE abweichenden Datums den konkurrierenden TAKTGEBER-Termin verifizieren. Die restlichen 17 HyperFollow-Releasetermine konnten nicht unabhängig bestätigt werden. Alle Termine in `index.html` bleiben bis zur Freigabe unverändert.
-
-Auch Titel bleiben bis zur Freigabe des Projektinhabers unverändert. DistroKid-Übersicht zeigt teilweise abweichende Schreibweisen (WACHOLDERBAUM ohne DER, GEVATTER TOD ohne DER, SCHWARZE SPINNE ohne DIE und ASCII-Umschreibungen von Umlauten).
-
-**Zur Terminfreigabe:** Screenshot(s) oder Liste aus DistroKid »Meine Musik« mit Songtitel + Veröffentlichungsdatum übermitteln. Danach alle 19 Titel/Termine vor dem Live-Schalten einzeln abgleichen.
-
-Die übermittelten Klickzahlen sind analytische HyperFollow-Seitenklicks, keine Streaming-Abrufe. Sie wurden bewusst nicht in die öffentliche Website eingebaut.
+- Ausschließlich Branch `draft/international-site-2026-10-10` geändert; keine Änderung an main, kein Merge und keine Veröffentlichung.
+- Exakte Titelschreibweise einschließlich ASCII-Umschreibungen und Groß-/Kleinschreibung übernommen.
+- Releases chronologisch neu geordnet, weil die automatische Anzeige den ersten kommenden und letzten erschienenen Array-Eintrag verwendet.
+- Sämtliche Spotify-Track-, Spotify-Album- und HyperFollow-URLs unverändert erhalten. UPCs, Cover und Serienzuordnungen erhalten.
+- Linkbestand vor/nach Änderung identisch; 19 Einträge, eindeutige HyperFollow-Links und chronologische Reihenfolge geprüft.
