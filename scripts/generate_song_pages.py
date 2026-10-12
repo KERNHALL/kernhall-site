@@ -34,6 +34,25 @@ for release in releases:
     path = '/songs/' + release['slug'] + '/'
     url = BASE + path
     description = f"{title} von KERNHALL: Veröffentlichung am {date(release['date'])}. Offizielles Cover, Songinformationen und Streaminglinks."
+    video_html = ''
+    video_script = ''
+    if 'videoId' in release:
+        assert re.fullmatch(r'[A-Za-z0-9_-]{11}', release['videoId'])
+        description = f"{title} von KERNHALL: Das vollständige Musikvideo über Kameradschaft, Verlust und Heimkehr. Jetzt ansehen und den Song streamen."
+        video_html = f'''<section class="song-video" id="music-video" aria-labelledby="music-video-heading">
+<h2 id="music-video-heading">Das vollständige Musikvideo / Full music video</h2>
+<p>Manche Einsätze kommen mit nach Hause. HEIMKEHR erzählt von Kameradschaft, Verlust und der Hoffnung, auch innerlich wieder anzukommen.</p>
+<p lang="en">Some missions follow you home. HEIMKEHR is about camaraderie, loss and the hope of finding your way home inside, too.</p>
+<div class="video-player" data-youtube-id="{release['videoId']}">
+<button class="video-load" type="button" aria-label="YouTube-Video HEIMKEHR laden / Load HEIMKEHR on YouTube" hidden>
+<img src="{release['cover']}" alt="" width="1254" height="1254" loading="lazy" decoding="async">
+<span class="video-load-label"><span class="video-play-icon" aria-hidden="true">▶</span>VIDEO LADEN / LOAD VIDEO</span>
+</button>
+</div>
+<p class="video-privacy">Erst beim Laden wird eine Verbindung zu YouTube hergestellt. / Loading connects to YouTube. <a href="/datenschutz.html#youtube">Datenschutz / Privacy</a></p>
+<a class="release-card-link" href="https://youtu.be/{release['videoId']}" target="_blank" rel="noopener">DIREKT AUF YOUTUBE / OPEN ON YOUTUBE</a>
+</section>\n'''
+        video_script = '<script src="/scripts/video-player.js" defer></script>\n'
     recording = {
         '@context': 'https://schema.org', '@type': 'MusicRecording',
         '@id': url + '#recording', 'name': title, 'url': url,
@@ -82,7 +101,7 @@ for release in releases:
 {series}
 <p>Hier findest du das offizielle Cover und die Streaminglinks zu <strong>{esc(title)}</strong> von KERNHALL.</p>
 <p lang="en">The official cover, release date and streaming links for <strong>{esc(title)}</strong> by KERNHALL.</p>
-<div class="button-row"><a class="button primary" href="{release['hyperfollow']}" target="_blank" rel="noopener">HYPERFOLLOW / STREAMING &amp; PRE-SAVE</a><a class="button ghost" id="song-spotify" data-release-date="{release['date']}" href="{release['spotify']}" target="_blank" rel="noopener" hidden>SPOTIFY ANHÖREN / LISTEN</a></div>
+{video_html}<div class="button-row"><a class="button primary" href="{release['hyperfollow']}" target="_blank" rel="noopener">HYPERFOLLOW / STREAMING &amp; PRE-SAVE</a><a class="button ghost" id="song-spotify" data-release-date="{release['date']}" href="{release['spotify']}" target="_blank" rel="noopener" hidden>SPOTIFY ANHÖREN / LISTEN</a></div>
 <p class="song-status" id="song-status">Streaming-Verfügbarkeit siehe HyperFollow. / See HyperFollow for availability.</p>
 </div></article>
 <section class="song-about"><h2>Über KERNHALL / About</h2><p>KERNHALL ist ein Ein-Mann-Musikprojekt für deutschsprachigen Industrial Metal und Metalcore. Texte, Konzepte und künstlerische Leitung stammen vom Gründer; Musik und Gesang werden mithilfe von KI produziert.</p><p lang="en">KERNHALL is a one-person project for German-language Industrial Metal and Metalcore. The founder writes the lyrics and develops the concepts; music and vocals are produced using AI.</p></section>
@@ -90,7 +109,7 @@ for release in releases:
 </main>
 <footer><span>© KERNHALL</span><div class="footer-links"><a href="/impressum.html">Impressum / Legal notice</a><a href="/datenschutz.html">Datenschutz / Privacy</a></div></footer>
 <script src="/scripts/song-page.js" defer></script>
-</body></html>
+{video_script}</body></html>
 '''
     target = ROOT / path.lstrip('/') / 'index.html'
     target.parent.mkdir(parents=True, exist_ok=True)
