@@ -34,6 +34,7 @@ for release in releases:
     path = '/songs/' + release['slug'] + '/'
     url = BASE + path
     description = f"{title} von KERNHALL: Veröffentlichung am {date(release['date'])}. Offizielles Cover, Songinformationen und Streaminglinks."
+    stylesheet = '/styles.css?v=20261012-video' if 'videoId' in release else '/styles.css'
     video_html = ''
     video_script = ''
     if 'videoId' in release:
@@ -75,7 +76,7 @@ for release in releases:
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{url}">
 <link rel="icon" href="/favicon.png">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="{stylesheet}">
 <meta property="og:type" content="music.song">
 <meta property="og:site_name" content="KERNHALL">
 <meta property="og:title" content="{esc(title)} – KERNHALL">
