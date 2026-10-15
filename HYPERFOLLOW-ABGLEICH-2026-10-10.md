@@ -1,5 +1,7 @@
 # HyperFollow-Abgleich (10.10.2026)
 
+Historischer Prüfstand. Die Tabelle enthält nur noch die weiterhin vorgesehenen Veröffentlichungen (bereinigt am 15.10.2026).
+
 Alle 19 offiziellen HyperFollow-Seiten wurden am 10.10.2026 im Cloud Browser geöffnet. Titel wurden aus der sichtbaren Seite übernommen, Termine aus der sichtbaren Angabe `AVAILABLE …`. Keine Datumsableitung aus Link, Reihenfolge, früherem Plan oder Suchindex.
 
 Ergebnis: 19/19 Titel verifiziert, 15/19 Veröffentlichungsdaten verifiziert. 8 Titel und 7 Termine in index.html korrigiert. Die ersten vier Seiten zeigen Streaminglinks, aber keinen Veröffentlichungstermin; deren vorhandene Termine bleiben unverändert und gelten in dieser Prüfung nicht als bestätigt. Insbesondere der früher dokumentierte HEIMKEHR-Termin wurde im aktuellen Browserabruf nicht angezeigt.
@@ -12,7 +14,6 @@ Ergebnis: 19/19 Titel verifiziert, 15/19 Veröffentlichungsdaten verifiziert. 8 
 | 4 | HEIMKEHR | HEIMKEHR | 09.10.2026 | Nicht verifizierbar | Datum unverändert, Seite zeigt keinen Termin | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/heimkehr) |
 | 5 | ÜBERLAST | UEBERLAST | 16.10.2026 | 16.10.2026 | Titel korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/ueberlast) |
 | 6 | KONTROLLVERLUST | KONTROLLVERLUST | 23.10.2026 | 23.10.2026 | Titel und Datum identisch | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/kontrollverlust) |
-| 7 | KÖNIGIN AUS STEIN | KOENIGIN AUS STEIN | 30.10.2026 | 11.12.2026 | Titel korrigiert; Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/koenigin-aus-stein) |
 | 8 | TAKTGEBER | TAKTGEBER | 06.11.2026 | 30.10.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/taktgeber) |
 | 9 | SIEBEN JAHRE | SIEBEN JAHRE | 13.11.2026 | 06.11.2026 | Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/sieben-jahre) |
 | 10 | RÄUBERBRÄUTIGAM | RAEUBERBRAEUTIGAM | 20.11.2026 | 13.11.2026 | Titel korrigiert; Datum korrigiert | [HyperFollow](https://distrokid.com/hyperfollow/kernhall/raeuberbraeutigam) |
