@@ -235,6 +235,7 @@
 <li><a href="/songs/gevatter-tod/">GEVATTER TOD</a><time datetime="2027-01-01">01.01.2027</time></li>
 <li><a href="/songs/schwarze-spinne/">SCHWARZE SPINNE</a><time datetime="2027-01-08">08.01.2027</time></li>
 <li><a href="/songs/traegerwelle/">TRÄGERWELLE</a><time datetime="2027-01-15">15.01.2027</time></li>
+<li><a href="/songs/neun-kreise/">NEUN KREISE</a><time datetime="2027-01-22">22.01.2027</time></li>
 </ol></details>
 <!-- SONG-CATALOGUE:END -->
     </section>
@@ -529,11 +530,19 @@
         spotify: 'https://open.spotify.com/track/5kJqec4Q8NFrVeWSKLwVYe',
         spotifyAlbum: 'https://open.spotify.com/album/1quqNZxY9ohoMUbjSS0LTp',
         upc: '700563695278',
+      },
+      {
+        title: 'NEUN KREISE',
+        slug: 'neun-kreise',
+        date: '2027-01-22',
+        cover: '/kernhall-symbol.png',
+        hyperfollow: '',
+        coverNote: 'Das finale Cover wird ergänzt.',
       }
     ];
 
     function songPath(release) {
-      const slug = release.hyperfollow.split('/').filter(Boolean).pop();
+      const slug = release.slug || (release.hyperfollow || '').split('/').filter(Boolean).pop();
       return `/songs/${slug === 'trgerwelle' ? 'traegerwelle' : slug}/`;
     }
 
@@ -631,7 +640,8 @@
         series.hidden = true;
       }
 
-      stream.href = release.hyperfollow;
+      stream.hidden = !release.hyperfollow;
+      stream.href = release.hyperfollow || songPath(release);
 
       stream.textContent =
         isUpcoming
@@ -724,30 +734,33 @@
       actions.className =
         'release-card-actions';
 
-      const streamLink =
-        document.createElement('a');
+      if (release.hyperfollow) {
+        const streamLink =
+          document.createElement('a');
+  
+        streamLink.className =
+          'release-card-link';
+  
+        streamLink.href =
+          release.hyperfollow;
+  
+        streamLink.target =
+          '_blank';
+  
+        streamLink.rel =
+          'noopener';
+  
+        streamLink.textContent =
+          'ANHÖREN / LISTEN';
+  
+        streamLink.setAttribute(
+          'aria-label',
+          `${release.title} auf Streamingdiensten öffnen`
+        );
+  
+        actions.appendChild(streamLink);
+      }
 
-      streamLink.className =
-        'release-card-link';
-
-      streamLink.href =
-        release.hyperfollow;
-
-      streamLink.target =
-        '_blank';
-
-      streamLink.rel =
-        'noopener';
-
-      streamLink.textContent =
-        'ANHÖREN / LISTEN';
-
-      streamLink.setAttribute(
-        'aria-label',
-        `${release.title} auf Streamingdiensten öffnen`
-      );
-
-      actions.appendChild(streamLink);
 
       if (release.spotify) {
         const spotifyLink =
@@ -802,8 +815,8 @@
           image:
             `https://kernhall.de${release.cover}`,
           url: `https://kernhall.de${songPath(release)}`,
-          ...(release.spotify
-            ? { sameAs: [release.hyperfollow, release.spotify] }
+          ...((release.spotify || release.hyperfollow)
+            ? { sameAs: [release.hyperfollow, release.spotify].filter(Boolean) }
             : {}),
           byArtist: {
             '@id':
@@ -863,7 +876,10 @@
       if (nextRelease && released.length > 0) {
         document.getElementById('upcoming-text').textContent =
           `NÄCHSTER SONG / COMING NEXT: ${nextRelease.title} – ${formatDate(nextRelease.date)}`;
-        document.getElementById('upcoming-link').href = nextRelease.hyperfollow;
+        const nextLink = document.getElementById('upcoming-link');
+        nextLink.href = nextRelease.hyperfollow || songPath(nextRelease);
+        nextLink.textContent = nextRelease.hyperfollow ? 'VORMERKEN / PRE-SAVE' : 'SONGDETAILS / ABOUT';
+        nextLink.target = nextRelease.hyperfollow ? '_blank' : '_self';
         upcomingNote.hidden = false;
       } else {
         upcomingNote.hidden = true;

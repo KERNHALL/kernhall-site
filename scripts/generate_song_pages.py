@@ -17,7 +17,7 @@ catalogue = re.search(r'const releases = \[([\s\S]*?)\n    \];', source).group(1
 releases = []
 for block in re.findall(r'\{[\s\S]*?\}', catalogue):
     data = dict(re.findall(r"(\w+): '([^']*)'", block))
-    data['slug'] = data['hyperfollow'].rstrip('/').split('/')[-1]
+    data['slug'] = data.get('slug') or data.get('hyperfollow', '').rstrip('/').split('/')[-1]
     if data['slug'] == 'trgerwelle':
         data['slug'] = 'traegerwelle'
     releases.append(data)
@@ -60,8 +60,13 @@ for release in releases:
         'datePublished': release['date'], 'inLanguage': 'de',
         'image': BASE + release['cover'],
         'byArtist': {'@type': 'MusicGroup', '@id': BASE + '/#artist', 'name': 'KERNHALL', 'url': BASE + '/'},
-        'sameAs': [release['hyperfollow'], release['spotify']],
+        'sameAs': [release[k] for k in ('hyperfollow', 'spotify') if release.get(k)],
     }
+    if release.get('hyperfollow'):
+        song_actions = f'''<div class="button-row"><a class="button primary" href="{release['hyperfollow']}" target="_blank" rel="noopener">HYPERFOLLOW / STREAMING &amp; PRE-SAVE</a><a class="button ghost" id="song-spotify" data-release-date="{release['date']}" href="{release.get('spotify', '')}" target="_blank" rel="noopener" hidden>SPOTIFY ANHÖREN / LISTEN</a></div>
+<p class="song-status" id="song-status">Streaming-Verfügbarkeit siehe HyperFollow. / See HyperFollow for availability.</p>'''
+    else:
+        song_actions = '''<p class="song-status">Geplant: 22.01.2027. HyperFollow wird nach der Freigabe durch DistroKid ergänzt. / Release planned for 22 January 2027. Streaming and pre-save links will be added after DistroKid approval.</p>'''
     series = (f"<p class=\"song-series\">Aus der Reihe <strong>{esc(release['series'])}</strong> / From the series DARK FAIRY TALES</p>" if 'series' in release else '')
     index = releases.index(release)
     neighbours = releases[max(0, index-1):index] + releases[index+1:index+2]
@@ -102,8 +107,7 @@ for release in releases:
 {series}
 <p>Hier findest du das offizielle Cover und die Streaminglinks zu <strong>{esc(title)}</strong> von KERNHALL.</p>
 <p lang="en">The official cover, release date and streaming links for <strong>{esc(title)}</strong> by KERNHALL.</p>
-{video_html}<div class="button-row"><a class="button primary" href="{release['hyperfollow']}" target="_blank" rel="noopener">HYPERFOLLOW / STREAMING &amp; PRE-SAVE</a><a class="button ghost" id="song-spotify" data-release-date="{release['date']}" href="{release['spotify']}" target="_blank" rel="noopener" hidden>SPOTIFY ANHÖREN / LISTEN</a></div>
-<p class="song-status" id="song-status">Streaming-Verfügbarkeit siehe HyperFollow. / See HyperFollow for availability.</p>
+{video_html}{song_actions}
 </div></article>
 <section class="song-about"><h2>Über KERNHALL / About</h2><p>KERNHALL ist ein Ein-Mann-Musikprojekt für deutschsprachigen Industrial Metal und Metalcore. Texte, Konzepte und künstlerische Leitung stammen vom Gründer; Musik und Gesang werden mithilfe von KI produziert.</p><p lang="en">KERNHALL is a one-person project for German-language Industrial Metal and Metalcore. The founder writes the lyrics and develops the concepts; music and vocals are produced using AI.</p></section>
 <section class="song-related"><h2>Weitere Songs / More songs</h2><ul>{links}</ul><a href="/#song-catalogue">Alle Songs / All songs</a></section>
