@@ -196,7 +196,6 @@
         </div>
       </article>
 
-      <p class="upcoming-note" id="upcoming-note" hidden><span id="upcoming-text"></span> <a id="upcoming-link" href="#" target="_blank" rel="noopener">VORMERKEN / PRE-SAVE</a></p>
 
       <div class="release-list-heading">
         <p class="eyebrow">
@@ -216,7 +215,7 @@
       </div>
 
       <!-- SONG-CATALOGUE:START -->
-<details class="song-catalogue" id="song-catalogue"><summary>Alle Songs &amp; Termine / All songs &amp; release dates</summary><ol>
+<details class="song-catalogue" id="song-catalogue"><summary>Veröffentlichte Songs / Released songs</summary><ol>
 <li><a href="/songs/kern/">KERN</a><time datetime="2026-09-18">18.09.2026</time></li>
 <li><a href="/songs/impuls/">IMPULS</a><time datetime="2026-09-25">25.09.2026</time></li>
 <li><a href="/songs/hall/">HALL</a><time datetime="2026-10-02">02.10.2026</time></li>
@@ -225,18 +224,6 @@
 <li><a href="/songs/kontrollverlust/">KONTROLLVERLUST</a><time datetime="2026-10-23">23.10.2026</time></li>
 <li><a href="/songs/taktgeber/">TAKTGEBER</a><time datetime="2026-10-30">30.10.2026</time></li>
 <li><a href="/songs/sieben-jahre/">SIEBEN JAHRE</a><time datetime="2026-11-06">06.11.2026</time></li>
-<li><a href="/songs/raeuberbraeutigam/">RAEUBERBRAEUTIGAM</a><time datetime="2026-11-13">13.11.2026</time></li>
-<li><a href="/songs/vorarbeiter/">VORARBEITER</a><time datetime="2026-11-20">20.11.2026</time></li>
-<li><a href="/songs/wacholderbaum/">WACHOLDERBAUM</a><time datetime="2026-11-27">27.11.2026</time></li>
-<li><a href="/songs/licht-im-stahl/">Licht im Stahl</a><time datetime="2026-11-29">29.11.2026</time></li>
-<li><a href="/songs/der-singende-knochen/">DER SINGENDE KNOCHEN</a><time datetime="2026-12-04">04.12.2026</time></li>
-<li><a href="/songs/die-drei-schlangenblaetter/">DIE DREI SCHLANGENBLAETTER</a><time datetime="2026-12-18">18.12.2026</time></li>
-<li><a href="/songs/das-kalte-herz/">DAS KALTE HERZ</a><time datetime="2026-12-25">25.12.2026</time></li>
-<li><a href="/songs/gevatter-tod/">GEVATTER TOD</a><time datetime="2027-01-01">01.01.2027</time></li>
-<li><a href="/songs/schwarze-spinne/">SCHWARZE SPINNE</a><time datetime="2027-01-08">08.01.2027</time></li>
-<li><a href="/songs/traegerwelle/">TRÄGERWELLE</a><time datetime="2027-01-15">15.01.2027</time></li>
-<li><a href="/songs/neun-kreise/">NEUN KREISE</a><time datetime="2027-01-22">22.01.2027</time></li>
-<li><a href="/songs/sieben-stufen/">SIEBEN STUFEN</a><time datetime="2027-01-29">29.01.2027</time></li>
 </ol></details>
 <!-- SONG-CATALOGUE:END -->
     </section>
@@ -854,24 +841,10 @@
             release.date <= today
         );
 
-      const upcoming =
-        releases.filter(
-          release =>
-            release.date > today
-        );
+      const latestRelease = released[released.length - 1];
 
-      const nextRelease =
-        upcoming[0] || null;
-
-      const latestRelease =
-        released.length
-          ? released[released.length - 1]
-          : releases[0];
-
-      if (released.length > 0) {
+      if (latestRelease) {
         renderFeatured(latestRelease, false);
-      } else if (nextRelease) {
-        renderFeatured(nextRelease, true);
       }
 
       const heroListen = document.getElementById('hero-listen');
@@ -879,18 +852,18 @@
         ? latestRelease.spotify
         : SPOTIFY_ARTIST;
 
-      const upcomingNote = document.getElementById('upcoming-note');
-      if (nextRelease && released.length > 0) {
-        document.getElementById('upcoming-text').textContent =
-          `NÄCHSTER SONG / COMING NEXT: ${nextRelease.title} – ${formatDate(nextRelease.date)}`;
-        const nextLink = document.getElementById('upcoming-link');
-        nextLink.href = nextRelease.hyperfollow || songPath(nextRelease);
-        nextLink.textContent = nextRelease.hyperfollow ? 'VORMERKEN / PRE-SAVE' : 'SONGDETAILS / ABOUT';
-        nextLink.target = nextRelease.hyperfollow ? '_blank' : '_self';
-        upcomingNote.hidden = false;
-      } else {
-        upcomingNote.hidden = true;
-      }
+      const catalogue = document.querySelector('#song-catalogue ol');
+      catalogue.replaceChildren(...released.map(release => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        const date = document.createElement('time');
+        link.href = songPath(release);
+        link.textContent = release.title;
+        date.dateTime = release.date;
+        date.textContent = formatDate(release.date);
+        item.append(link, date);
+        return item;
+      }));
 
       const grid =
         document.getElementById(
