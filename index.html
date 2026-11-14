@@ -471,6 +471,14 @@
         series: 'DIE SCHAURIGEN MÄRCHEN'
       },
       {
+        title: 'ICH SEHE DICH',
+        slug: 'ich-sehe-dich',
+        date: '2026-12-11',
+        cover: 'https://static.metricool.com/planner/202611/6931624-file-9548169311509737783.png',
+        hyperfollow: 'https://distrokid.com/hyperfollow/kernhall/ich-sehe-dich',
+        series: 'DIE SCHAURIGEN MÄRCHEN'
+      },
+      {
         title: 'DIE DREI SCHLANGENBLAETTER',
         date: '2026-12-18',
         cover: '/covers/webp/Kernhall-Drei-Schlangenblaetter-Cover.webp',
@@ -814,7 +822,9 @@
           datePublished: release.date,
           inLanguage: 'de',
           image:
-            `https://kernhall.de${release.cover}`,
+            release.cover.startsWith('https://')
+              ? release.cover
+              : `https://kernhall.de${release.cover}`,
           url: `https://kernhall.de${songPath(release)}`,
           ...((release.spotify || release.hyperfollow)
             ? { sameAs: [release.hyperfollow, release.spotify].filter(Boolean) }
