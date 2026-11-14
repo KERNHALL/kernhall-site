@@ -1,0 +1,22 @@
+name: HALL stock photo asset fetch
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/hall-video/**'
+      - '.github/workflows/hall-photos.yml'
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download individual Pexels stock photos (unique sources)
+        run: python3 tools/hall-video/photos.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HALL-PHOTOS-18
+          path: HALL-PHOTO-SOURCES/
+          retention-days: 7
