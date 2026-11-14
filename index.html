@@ -356,17 +356,25 @@
       </a>
     </div>
 
-    <div id="visitor-counter" aria-label="Website-Besucherzähler" style="font-size:0.8rem; opacity:0.8; margin-top:0.75rem;"></div>
+    <div id="visitor-counter" aria-label="Website-Besucherzähler" style="display:inline-flex;align-items:center;font-size:0.75rem;opacity:0.75;"></div>
   </footer>
 
   <script>
-    // Display the existing GoatCounter totals without changing tracking.
+    // Compact visitor total in the footer; existing tracking remains unchanged.
     window.addEventListener('load', function () {
       if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
         window.goatcounter.visit_count({
           append: '#visitor-counter',
           path: 'TOTAL',
-          no_branding: true
+          type: 'html',
+          no_branding: true,
+          attr: { width: '72', height: '18', loading: 'eager', title: 'Besucher gesamt' },
+          style: `
+            html, body { margin: 0 !important; padding: 0 !important; background: transparent !important; overflow: hidden !important; }
+            div { margin: 0 !important; padding: 0 !important; background: transparent !important; border: 0 !important; box-shadow: none !important; font: 12px/18px system-ui, sans-serif !important; color: #aaa !important; text-align: center !important; }
+            #gcvc-for, #gcvc-by { display: none !important; }
+            #gcvc-views { margin: 0 !important; padding: 0 !important; color: #aaa !important; font: 12px/18px system-ui, sans-serif !important; }
+          `
         });
       }
     });
