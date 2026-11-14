@@ -1,0 +1,20 @@
+name: HALL Emotional Extra Photos
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/hall-video/supplemental.py'
+      - '.github/workflows/hall-extra-photos.yml'
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download remaining emotional stock photo references
+        run: python3 tools/hall-video/supplemental.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HALL-EXTRA-EMOTIONAL-PHOTOS
+          path: hall-extra-photos/
+          retention-days: 7
