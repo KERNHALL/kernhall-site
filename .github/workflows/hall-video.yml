@@ -18,7 +18,7 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Download licensed stock clips and render each once
         env:
-          HALL_TEST: '1'
+          HALL_TEST: '0'
         run: python3 tools/hall-video/render.py
       - name: Upload rendered video and sources
         uses: actions/upload-artifact@v4
