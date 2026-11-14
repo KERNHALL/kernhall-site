@@ -1,0 +1,38 @@
+name: HALL Emotional Film Assets
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'tools/hall-video/emotional-*.py'
+      - '.github/workflows/hall-emotional.yml'
+jobs:
+  photos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download 29 emotional Pexels photos
+        run: python3 tools/hall-video/emotional-photos.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HALL-EMOTIONAL-PHOTOS
+          path: hall-emotional-assets/photos/
+          retention-days: 7
+  videos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Download and transcode 14 unique emotional stock videos
+        run: python3 tools/hall-video/emotional-videos.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HALL-EMOTIONAL-VIDEOS
+          path: hall-emotional-assets/videos/
+          retention-days: 7
