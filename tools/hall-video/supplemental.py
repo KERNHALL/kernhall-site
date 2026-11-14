@@ -11,6 +11,11 @@ def fetch(item):
   for c in iter(lambda:resp.read(1024*1024),b""):f.write(c)
  if dst.stat().st_size<12000:raise RuntimeError("tiny image")
  return {"id":pid,"title":title,"filename":dst.name,"source":f"https://www.pexels.com/photo/{pid}/"}
-with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool: res=list(pool.map(fetch,enumerate(PHOTOS)))
+def safely_fetch(item):
+ try: return fetch(item)
+ except Exception as e:
+  print("SKIP",item[1][0],str(e),flush=True)
+  return None
+with concurrent.futures.ThreadPoolExecutor(max_workers=5) as pool: res=[r for r in pool.map(safely_fetch,enumerate(PHOTOS)) if r]
 (base/"SOURCES.json").write_text(json.dumps(res,indent=2))
 print("SUPPLEMENTAL PHOTO SOURCES",len(res))
