@@ -9,7 +9,7 @@ document.querySelectorAll('[data-youtube-id]').forEach(player => {
   button.addEventListener('click', () => {
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?playsinline=1`;
-    iframe.title = 'KERNHALL – HEIMKEHR | Vollständiges Musikvideo';
+    iframe.title = `KERNHALL – ${document.querySelector('h1')?.textContent?.trim() || 'Musikvideo'} | Vollständiges Musikvideo`;
     iframe.allow = 'encrypted-media; picture-in-picture; fullscreen';
     iframe.allowFullscreen = true;
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
