@@ -355,7 +355,22 @@
         Datenschutz / Privacy
       </a>
     </div>
+
+    <div id="visitor-counter" aria-label="Website-Besucherzähler" style="font-size:0.8rem; opacity:0.8; margin-top:0.75rem;"></div>
   </footer>
+
+  <script>
+    // Display the existing GoatCounter totals without changing tracking.
+    window.addEventListener('load', function () {
+      if (window.goatcounter && typeof window.goatcounter.visit_count === 'function') {
+        window.goatcounter.visit_count({
+          append: '#visitor-counter',
+          path: 'TOTAL',
+          no_branding: true
+        });
+      }
+    });
+  </script>
 
   <script>
     const SPOTIFY_ARTIST =
